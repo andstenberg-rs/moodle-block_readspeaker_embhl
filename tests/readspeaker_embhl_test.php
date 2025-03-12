@@ -24,7 +24,7 @@
  */
 class block_readspeaker_embhl_testcase extends advanced_testcase {
     public function test_get_content() {
-        global $CFG;
+        global $CFG, $PAGE;
 
         $this->resetAfterTest(true);
         set_config('lang', 'it_it', 'block_readspeaker_embhl');
@@ -45,7 +45,7 @@ class block_readspeaker_embhl_testcase extends advanced_testcase {
         $content = new stdClass;
         $content->text = '';
 
-        $this->page->requires->yui_module('moodle-block_readspeaker_embhl-ReadSpeaker', 'M.block_RS.ReadSpeaker.init');
+        $PAGE->requires->yui_module('moodle-block_readspeaker_embhl-ReadSpeaker', 'M.block_RS.ReadSpeaker.init');
 
         $docreader_id = get_config('block_readspeaker_embhl', 'docreaderenabled') ? 'cid: "' . get_config('block_readspeaker_embhl', 'docreaderenabled') . '"' : '';
 
@@ -75,7 +75,7 @@ class block_readspeaker_embhl_testcase extends advanced_testcase {
             </a>
             </div>';
 
-        $test_mock = $this->createMock('block_readspeaker_embhl');
-        $test_mock->expects($this->any())->method('get_content')->will($this->returnValue($content));
+        //$test_mock = $this->createMock('block_readspeaker_embhl');
+        //$test_mock->expects($this->any())->method('get_content')->will($this->returnValue($content));
     }
 }
